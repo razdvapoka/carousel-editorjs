@@ -105,7 +105,7 @@ export default class SimpleCarousel {
     this.wrapper.appendChild(this.list)
     if (this.data.length > 0) {
       for (const load of this.data) {
-        const loadItem = this.creteNewItem(load.url, load.caption)
+        const loadItem = this.createNewItem(load.url, load.caption, load.file)
 
         this.list.insertBefore(loadItem, this.addButton)
       }
@@ -138,6 +138,7 @@ export default class SimpleCarousel {
           data.push({
             url: item.firstChild.value,
             file: {
+              url: item.firstChild.value,
               src: item.firstChild.value,
               srcSet: item.firstChild.getAttribute('data-srcset'),
               width: item.firstChild.getAttribute('data-width'),
@@ -170,7 +171,7 @@ export default class SimpleCarousel {
    *
    * @returns {HTMLDivElement}
    */
-  creteNewItem(url, caption) {
+  createNewItem(url, caption, file) {
     // Create item, remove button and field for image url
     const block = make('div', [this.CSS.block])
     const item = make('div', [this.CSS.item])
@@ -179,6 +180,10 @@ export default class SimpleCarousel {
     const imagePreloader = make('div', [this.CSS.imagePreloader])
 
     imageUrl.value = url
+    imageUrl.setAttribute('data-srcset', file.srcSet)
+    imageUrl.setAttribute('data-src', file.src)
+    imageUrl.setAttribute('data-width', file.width)
+    imageUrl.setAttribute('data-height', file.height)
     removeBtn.innerHTML = this.IconClose
     removeBtn.addEventListener('click', () => {
       block.remove()
@@ -305,7 +310,7 @@ export default class SimpleCarousel {
     // Создаем элемент
     this.uploader.uploadSelectedFile({
       onPreview: (src) => {
-        const newItem = this.creteNewItem('', '')
+        const newItem = this.createNewItem('', '', {})
 
         newItem.firstChild.lastChild.style.backgroundImage = `url(${src})`
         this.list.insertBefore(newItem, this.addButton)
