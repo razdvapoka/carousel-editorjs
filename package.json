@@ -14,7 +14,8 @@
   "main": "/home/mr9bit/work/lambda-react-redux/src/media/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
-    "build:dev": "webpack --mode development --watch"
+    "build:dev": "webpack --mode development --watch",
+    "lint": "eslint 'src/**/*.js'"
   },
   "author": {
     "name": "CodeX",
@@ -25,10 +26,10 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/runtime": "^7.2.0",
-    "@codexteam/ajax": "^4.1.0",
+    "@codexteam/ajax": "^4.2.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^1.0.0",
-    "eslint": "^5.9.0",
+    "eslint": "^6.8.0",
     "eslint-config-codex": "github:codex-team/eslint-config",
     "eslint-loader": "^2.1.1",
     "formidable": "^1.2.1",
@@ -40,5 +41,12 @@
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
   }
 }

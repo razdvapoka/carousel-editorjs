@@ -1,8 +1,14 @@
 {
+  "parser": "babel-eslint",
   "extends": [
-    "codex"
+    "standard",
+    "prettier"
   ],
-  "globals": {
-    "fetch": true
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": 2,
+    "no-shadow": 2
   }
 }
