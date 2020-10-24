@@ -144,7 +144,7 @@ export default class SimpleCarousel {
               width: item.firstChild.getAttribute('data-width'),
               height: item.firstChild.getAttribute('data-height'),
             },
-            caption: item.lastChild.value,
+            caption: item.lastChild.innerHTML,
           })
         }
       }
@@ -218,11 +218,13 @@ export default class SimpleCarousel {
    */
   _createImage(url, item, captionText, removeBtn) {
     const image = document.createElement('img')
-    const caption = make('input', [this.CSS.caption, this.CSS.input])
+    const caption = make('div', [this.CSS.caption, this.CSS.input], {
+      contentEditable: true,
+    })
 
     image.src = url
     if (captionText) {
-      caption.value = captionText
+      caption.innerHTML = captionText
     }
     caption.placeholder = 'Caption...'
 
