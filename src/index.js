@@ -144,7 +144,7 @@ export default class SimpleCarousel {
               width: item.firstChild.getAttribute('data-width'),
               height: item.firstChild.getAttribute('data-height'),
             },
-            caption: item.lastChild.innerHTML,
+            caption: item.lastChild.innerText,
           })
         }
       }
@@ -224,7 +224,7 @@ export default class SimpleCarousel {
 
     image.src = url
     if (captionText) {
-      caption.innerHTML = captionText
+      caption.innerText = captionText
     }
     caption.placeholder = 'Caption...'
 
